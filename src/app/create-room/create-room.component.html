@@ -1,0 +1,46 @@
+<div class="card" style="width: 18rem">
+  <div class="card-body">
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">User Name</label>
+        <input
+          [(ngModel)]="model.userName"
+          type="text"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Enter name"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Room Id</label>
+        <input
+          [(ngModel)]="model.roomId"
+          type="text"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Enter room id"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="onSubmit('create')">
+        Create Room
+      </button>
+      <div class="form-group">
+        <label for="exampleInputPassword2">Room Id to Join</label>
+        <input
+          [(ngModel)]="model.roomId"
+          type="text"
+          class="form-control"
+          id="exampleInputPassword2"
+          placeholder="Enter room id"
+          [ngModelOptions]="{ standalone: true }"
+        />
+      </div>
+      <button type="submit" class="btn btn-success" (click)="onSubmit('join')">
+        Join Room
+      </button>
+    </form>
+  </div>
+</div>

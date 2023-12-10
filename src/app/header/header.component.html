@@ -1,0 +1,5 @@
+<nav class="navbar navbar-dark bg-primary">
+  <a class="navbar-brand">Canvas Game</a>
+  <h4 *ngIf="userDetails.userName">Name: {{userDetails.userName}}</h4>
+  <button mat-raised-button color="accent" *ngIf="isJoined && userDetails.isAdmin" (click)="onToggle()">{{toggle ? "Stop" : "Start"}}</button>
+</nav>

@@ -1,0 +1,42 @@
+<div class="chat-container">
+  <div class="score-board">
+    <app-score-board></app-score-board>
+  </div>
+  <div class="chat-messages" #messageRef>
+    <ng-container *ngFor="let msg of messageList">
+      <div class="messages">
+        <ng-container *ngIf="msg.message; else joined">
+          <p>
+            <span class="userName">{{ msg.userName }}: </span>{{ msg.message }}
+          </p>
+          <mat-divider></mat-divider>
+        </ng-container>
+
+        <ng-template #joined>
+          <div class="joined">
+            <p><i class="fa-solid fa-right-to-bracket"></i></p>
+            <p>
+              <span class="userName">{{ msg.userName }}</span
+              >joined the room
+            </p>
+          </div>
+          <mat-divider></mat-divider>
+        </ng-template>
+      </div>
+    </ng-container>
+    <!-- Add more messages here -->
+  </div>
+  <form action="" (keydown.enter)="sendMessage()">
+    <div class="chat-input">
+      <input
+        type="text"
+        placeholder="Type your message..."
+        [(ngModel)]="messageValue"
+        [ngModelOptions]="{ standalone: true }"
+      />
+      <button (click)="sendMessage()" (keydown.enter)="sendMessage()">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </div>
+  </form>
+</div>

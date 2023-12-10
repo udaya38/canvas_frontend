@@ -1,0 +1,17 @@
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  height: calc(100vh - 56px);
+  .left-pane{
+    flex: 3;
+  }
+  .right-pane{
+    flex: 1;
+  }
+}
+
+@media (max-width : 600px) {
+  .main-container{
+    flex-direction: column;
+  }
+}

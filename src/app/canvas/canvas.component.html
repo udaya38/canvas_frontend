@@ -1,0 +1,114 @@
+<section class="canvas-container">
+  <div class="status-header" *ngIf="isSelected || isChoosing">
+    <h4 *ngIf="isChoosing">{{userChoosing}}</h4>
+    <h4 *ngIf="isSelected">{{userChoosing}}
+    <span>{{wordArrayString}}</span>
+  </h4>
+  </div>
+      
+  <div class="card">
+    <div class="card-body">
+      <canvas
+        appAppCanvasListner
+        [configs]="canvasConfig"
+        width="500"
+        height="400"
+        class="canvas"
+      ></canvas>
+    </div>
+  </div>
+  <div class="icon-container" [style.display]="isSelected || isChoosing ? 'none' : 'flex'">
+    <div class="icon-basic-container" (click)="onIconClick($event.target)">
+      <i
+        class="fa-solid fa-pencil"
+        id="pencil"
+        [class.selected]="selectedIcon === 'pencil'"
+      ></i>
+      <i
+        class="fa-solid fa-eraser"
+        id="eraser"
+        [class.selected]="selectedIcon === 'eraser'"
+      ></i>
+      <i
+        class="fa-solid fa-arrow-rotate-left"
+        id="undo"
+        [class.selected]="selectedIcon === 'undo'"
+      ></i>
+      <i
+        class="fa-solid fa-arrow-rotate-right"
+        id="redo"
+        [class.selected]="selectedIcon === 'redo'"
+      ></i>
+      <i
+        class="fa-solid fa-xmark"
+        id="clear"
+        [class.selected]="selectedIcon === 'clear'"
+      ></i>
+    </div>
+    <ng-container *ngIf="isBrushSelected">
+      <div class="config-container" (click)="onSizeClick($event.target)">
+        <i
+          class="fa-regular fa-circle-dot"
+          id="brushsize"
+          *ngIf="selectedIcon === 'pencil' || selectedIcon === 'eraser'"
+        ></i>
+        <i
+          class="fa-solid fa-palette"
+          id="colors"
+          [style.color]="brushColor"
+          *ngIf="selectedIcon === 'pencil'"
+        ></i>
+        <div
+          tabindex="0"
+          class="brush-size-container"
+          *ngIf="isBrushSizeSelected"
+        >
+          <label for="customRange1" class="form-label"
+            >Brush size: {{ rangeValue }}</label
+          >
+          <input
+            type="range"
+            min="1"
+            max="100"
+            [ngModel]="rangeValue"
+            (ngModelChange)="onRangeChange($event)"
+            id="customRange1"
+            (click)="$event.stopPropagation()"
+          />
+        </div>
+        <div
+          tabindex="0"
+          class="brush-size-container"
+          *ngIf="isEraseSizeSelected"
+        >
+          <label for="customRange2" class="form-label"
+            >Eraser size: {{ eraseValue }}</label
+          >
+          <input
+            type="range"
+            min="1"
+            max="100"
+            [ngModel]="eraseValue"
+            (ngModelChange)="onRangeChange($event)"
+            id="customRange2"
+            (click)="$event.stopPropagation()"
+          />
+        </div>
+        <div
+          class="colors-container"
+          *ngIf="isColorsSelected"
+          (click)="$event.stopPropagation(); onColorClick($event.target)"
+        >
+          <ng-container *ngFor="let color of colorList">
+            <div [style.background]="color" class="droplet"></div>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+  <div class="button-container" *ngIf="showTimer">
+    <button mat-fab color="warn" aria-label="Example icon button with a home icon">
+      <mat-icon>{{timer}}</mat-icon>
+    </button>
+  </div>
+</section>

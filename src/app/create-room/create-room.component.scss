@@ -1,0 +1,11 @@
+.card {
+  width: 50% !important;
+  margin: 0 auto;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  form > * {
+    margin-bottom: 5px;
+  }
+}

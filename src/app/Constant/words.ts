@@ -1,0 +1,22 @@
+export const WORD_LIST:string[] = [
+    "Tree",
+    "House",
+    "Sun",
+    "Cat",
+    "Dog",
+    "Car",
+    "Smile",
+    "Boat",
+    "Flower",
+    "Star",
+    "Fish",
+    "Bird",
+    "Heart",
+    "Cloud",
+    "Moon",
+    "Cake",
+    "Book",
+    "Ice Cream",
+    "Clock",
+    "Hat"
+  ];

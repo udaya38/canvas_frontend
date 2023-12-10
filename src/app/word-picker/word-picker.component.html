@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Choose a Word</h2>
+<mat-dialog-content>
+    <p>Time remaining: {{ timer }} seconds</p>
+  <mat-list>
+    <mat-list-item class="word-list" *ngFor="let word of data.words" (click)="onWordSelected(word)">
+     <button mat-raised-button color="accent"> {{ word }}</button>
+    </mat-list-item>
+  </mat-list>
+</mat-dialog-content>
